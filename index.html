@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Самотні жінки 30+</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .phone-frame {
+      width: 650px;
+      height: 750px;
+      background: url('mobile.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      width: 260px;
+      height: 540px;
+      background: transparent;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 18px;
+      color: #000; /* Чёрный текст */
+      margin: 10px 0 5px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #000; /* Чёрный текст */
+      margin: 5px 0 20px;
+    }
+
+    .button {
+      background: #ff0000;
+      color: white;
+      padding: 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .button img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="phone-frame">
+    <div class="content">
+      <img src="photo1.jpg" class="avatar" alt="Profile">
+      <h1>💋САМОТНІ ЖІНКИ 30+💋</h1>
+      <p>👆Зазирни👇</p>
+
+      <a id="goBtn" class="button" href="#">
+        <img src="https://em-content.zobj.net/source/twitter/376/backhand-index-pointing-right_1f449.png" alt="arrow">
+        ДАЛІ
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('goBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const userAgent = navigator.userAgent.toLowerCase();
+      const targetURL = "https://1linkpath.com/aff_c?offer_id=9027&aff_id=76957&url_id=0&aff_sub5=free-social&source=NICK&click_id=%7Bsub_id%7D";
+
+      // Для iOS (попытка открыть в Safari)
+      if (/iphone|ipad|ipod/.test(userAgent)) {
+        // 1. Пытаемся открыть через скрытый iframe (обход блокировки)
+        const safariURL = `https://${targetURL.replace(/^https?:\/\//, '')}`;
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = safariURL;
+        document.body.appendChild(iframe);
+        
+        // 2. Fallback: если не сработало, открываем в новом окне
+        setTimeout(() => {
+          window.open(safariURL, '_blank');
+        }, 300);
+        
+        // Удаляем iframe через секунду
+        setTimeout(() => {
+          iframe.remove();
+        }, 1000);
+      }
+      // Для Android (Intent в Chrome)
+      else if (/android/.test(userAgent)) {
+        const intentURL = `intent://${targetURL.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(targetURL)};end`;
+        window.location.href = intentURL;
+        
+        // Fallback: если Intent не сработал
+        setTimeout(() => {
+          if (!document.hidden) {
+            window.location.href = targetURL;
+          }
+        }, 500);
+      }
+      // Для других устройств
+      else {
+        window.open(targetURL, '_blank');
+      }
+    });
+  </script>
+
+</body>
+</html>
